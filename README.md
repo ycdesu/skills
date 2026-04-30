@@ -4,31 +4,21 @@ A centralized monorepo of skills, tools, and configurations for use with Claude 
 
 This repo collects independent skill modules under [`skills/`](./skills/). Each module is self-contained, with its own `SKILL.md`, license (when derived from upstream work), and documentation.
 
-## Available Skills
+## Install all skills
 
-- [`native-git-stack`](./skills/native-git-stack/) — Manage stacked branches and pull requests using only native `git` and the GitHub CLI (`gh`), with no extensions or GitHub Stacked PRs feature required. Derived from GitHub's [`gh-stack`](https://github.com/github/gh-stack) skill.
-
-More skills will be added here over time.
-
-## Install
-
-You can install all skills at once, or pick individual modules.
-
-### Install all skills
-
-#### Option 1 — `skills` CLI (npm)
+### Option 1 — `skills` CLI (npm)
 
 ```bash
 npx skills add ycdesu/skills
 ```
 
-#### Option 2 — `gh skill` (GitHub CLI, in preview)
+### Option 2 — `gh skill` (GitHub CLI, in preview)
 
 ```bash
 gh skill install ycdesu/skills
 ```
 
-#### Option 3 — manual
+### Option 3 — manual
 
 ```bash
 git clone https://github.com/ycdesu/skills.git
@@ -36,29 +26,21 @@ mkdir -p ~/.claude/skills
 cp -r skills/skills/* ~/.claude/skills/
 ```
 
-### Install a single skill
+## Available skills
 
-Replace `<skill-name>` with the directory name under `skills/` (e.g. `native-git-stack`).
+More skills will be added here over time.
+
+### [`native-git-stack`](./skills/native-git-stack/)
+
+Manage stacked branches and pull requests using only native `git` and the GitHub CLI (`gh`), with no extensions or GitHub Stacked PRs feature required. Derived from GitHub's [`gh-stack`](https://github.com/github/gh-stack) skill.
 
 #### Option 1 — `skills` CLI (npm)
-
-```bash
-npx skills add ycdesu/skills --skill <skill-name>
-```
-
-Example:
 
 ```bash
 npx skills add ycdesu/skills --skill native-git-stack
 ```
 
 #### Option 2 — `gh skill` (GitHub CLI, in preview)
-
-```bash
-gh skill install ycdesu/skills <skill-name>
-```
-
-Example:
 
 ```bash
 gh skill install ycdesu/skills native-git-stack
@@ -69,7 +51,7 @@ gh skill install ycdesu/skills native-git-stack
 ```bash
 git clone https://github.com/ycdesu/skills.git
 mkdir -p ~/.claude/skills
-cp -r skills/skills/<skill-name> ~/.claude/skills/
+cp -r skills/skills/native-git-stack ~/.claude/skills/
 ```
 
 ## Repo layout
