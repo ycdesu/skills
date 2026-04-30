@@ -32,7 +32,7 @@ More skills will be added here over time.
 
 ### [`native-git-stack`](./skills/native-git-stack/)
 
-Manage stacked branches and pull requests using only native `git` and the GitHub CLI (`gh`), with no extensions or GitHub Stacked PRs feature required. Derived from GitHub's [`gh-stack`](https://github.com/github/gh-stack) skill.
+Manage stacked branches and pull requests using only native `git` and the GitHub CLI (`gh`), with no extensions or GitHub Stacked PRs feature required. Reorganizes your code into separate, atomic commits and branches so each change can be reviewed independently. Derived from GitHub's [`gh-stack`](https://github.com/github/gh-stack) skill.
 
 #### Option 1 — `skills` CLI (npm)
 
