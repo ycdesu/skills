@@ -54,6 +54,30 @@ mkdir -p ~/.claude/skills
 cp -r skills/skills/native-git-stack ~/.claude/skills/
 ```
 
+### [`vendorize-skill`](./skills/vendorize-skill/)
+
+Add or sync skills vendored from upstream GitHub repositories. Each vendored skill folder gets a `vendored.md` manifest that records the source URL, branch, subpath, pinned commit SHA, and sync date — so future updates know exactly what to diff and reconcile.
+
+#### Option 1 — `skills` CLI (npm)
+
+```bash
+npx skills add ycdesu/skills --skill vendorize-skill
+```
+
+#### Option 2 — `gh skill` (GitHub CLI, in preview)
+
+```bash
+gh skill install ycdesu/skills vendorize-skill
+```
+
+#### Option 3 — manual
+
+```bash
+git clone https://github.com/ycdesu/skills.git
+mkdir -p ~/.claude/skills
+cp -r skills/skills/vendorize-skill ~/.claude/skills/
+```
+
 ## Repo layout
 
 ```
@@ -61,8 +85,10 @@ skills/
 ├── LICENSE
 ├── README.md
 └── skills/
-    └── native-git-stack/
-        ├── LICENSE
+    ├── native-git-stack/
+    │   ├── LICENSE
+    │   └── SKILL.md
+    └── vendorize-skill/
         └── SKILL.md
 ```
 
