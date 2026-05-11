@@ -131,6 +131,9 @@ Next steps:
      <!-- personal-wiki:start --> markers) so you know how I'll handle your wiki.
   2. Edit <wiki>/now.md — fill in your quarter goal, milestone, and this week.
   3. Drop your first source into <raw>/inbox/ and say "ingest".
+  4. Install the Obsidian CLI (`obsidian-cli`) if you use Obsidian, so wiki
+     files can be opened directly from the terminal:
+     https://github.com/Vinzent03/obsidian-cli
 
 Re-run /personal-wiki-init anytime to update conventions or skills.
 ```
