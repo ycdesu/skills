@@ -54,6 +54,32 @@ mkdir -p ~/.claude/skills
 cp -r skills/skills/native-git-stack ~/.claude/skills/
 ```
 
+### [`personal-wiki-init`](./skills/personal-wiki-init/)
+
+Bootstrap an LLM-maintained personal wiki in any project. Creates a `wiki/` folder skeleton, installs companion skills (`wiki-ingest`, `wiki-query`, `review`) under `.claude/skills/`, and appends a marker-wrapped conventions block to `CLAUDE.md` so casual edits follow the same rules. Idempotent — safe to re-run for updates.
+
+Inspired by [Andrej Karpathy's personal wiki idea](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+
+#### Option 1 — `skills` CLI (npm)
+
+```bash
+npx skills add ycdesu/skills --skill personal-wiki-init
+```
+
+#### Option 2 — `gh skill` (GitHub CLI, in preview)
+
+```bash
+gh skill install ycdesu/skills personal-wiki-init
+```
+
+#### Option 3 — manual
+
+```bash
+git clone https://github.com/ycdesu/skills.git
+mkdir -p ~/.claude/skills
+cp -r skills/skills/personal-wiki-init ~/.claude/skills/
+```
+
 ### [`vendorize-skill`](./skills/vendorize-skill/)
 
 Add or sync skills vendored from upstream GitHub repositories. Each vendored skill folder gets a `vendored.md` manifest that records the source URL, branch, subpath, pinned commit SHA, and sync date — so future updates know exactly what to diff and reconcile.
@@ -88,6 +114,9 @@ skills/
     ├── native-git-stack/
     │   ├── LICENSE
     │   └── SKILL.md
+    ├── personal-wiki-init/
+    │   ├── SKILL.md
+    │   └── templates/
     └── vendorize-skill/
         └── SKILL.md
 ```
