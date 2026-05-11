@@ -2,59 +2,76 @@
 
 A centralized monorepo of skills, tools, and configurations for use with Claude Code and other agent harnesses.
 
-This repo collects independent skill modules under [`skills/`](./skills/). Each module is self-contained, with its own `SKILL.md`, license (when derived from upstream work), and documentation.
+Each skill under [`skills/`](./skills/) is self-contained, with its own `SKILL.md`, license (when derived from upstream work), and documentation.
 
-## Install all skills
+## Contents
 
-### Option 1 — `skills` CLI (npm)
+- [Installation](#installation)
+  - [Install all skills](#install-all-skills)
+  - [Install a single skill](#install-a-single-skill)
+- [Available skills](#available-skills)
+- [Repo layout](#repo-layout)
+- [License](#license)
+
+## Installation
+
+Three methods are supported. Pick one — they install the same files.
+
+| Method | When to use |
+| --- | --- |
+| `skills` CLI (npm) | Simplest. Requires Node.js. |
+| `gh skill` (GitHub CLI, preview) | If you already use `gh`. |
+| Manual `git clone` | No extra tooling needed. |
+
+### Install all skills
 
 ```bash
+# npm
 npx skills add ycdesu/skills
-```
 
-### Option 2 — `gh skill` (GitHub CLI, in preview)
-
-```bash
+# gh CLI
 gh skill install ycdesu/skills
-```
 
-### Option 3 — manual
-
-```bash
+# manual
 git clone https://github.com/ycdesu/skills.git
 mkdir -p ~/.claude/skills
 cp -r skills/skills/* ~/.claude/skills/
 ```
 
-## Available skills
+### Install a single skill
 
-More skills will be added here over time.
-
-### [`native-git-stack`](./skills/native-git-stack/)
-
-Manage stacked branches and pull requests using only native `git` and the GitHub CLI (`gh`), with no extensions or GitHub Stacked PRs feature required. Reorganizes your code into separate, atomic commits and branches so each change can be reviewed independently. Derived from GitHub's [`gh-stack`](https://github.com/github/gh-stack) skill.
-
-#### Option 1 — `skills` CLI (npm)
+Replace `<skill>` with the skill folder name (e.g. `native-git-stack`).
 
 ```bash
-npx skills add ycdesu/skills --skill native-git-stack
-```
+# npm
+npx skills add ycdesu/skills --skill <skill>
 
-#### Option 2 — `gh skill` (GitHub CLI, in preview)
+# gh CLI
+gh skill install ycdesu/skills <skill>
 
-```bash
-gh skill install ycdesu/skills native-git-stack
-```
-
-#### Option 3 — manual
-
-```bash
+# manual
 git clone https://github.com/ycdesu/skills.git
 mkdir -p ~/.claude/skills
-cp -r skills/skills/native-git-stack ~/.claude/skills/
+cp -r skills/skills/<skill> ~/.claude/skills/
 ```
 
-### [`personal-wiki-init`](./skills/personal-wiki-init/)
+## Available skills
+
+| Skill | Description |
+| --- | --- |
+| [`native-git-stack`](./skills/native-git-stack/) | Manage stacked branches and PRs with only `git` and `gh`. |
+| [`personal-wiki-init`](./skills/personal-wiki-init/) | Bootstrap an LLM-maintained personal wiki in any project. |
+| [`vendorize-skill`](./skills/vendorize-skill/) | Vendor and sync skills from upstream GitHub repositories. |
+
+More skills will be added over time.
+
+### `native-git-stack`
+
+Manage stacked branches and pull requests using only native `git` and the GitHub CLI (`gh`) — no extensions or GitHub Stacked PRs feature required. Reorganizes your code into separate, atomic commits and branches so each change can be reviewed independently.
+
+Derived from GitHub's [`gh-stack`](https://github.com/github/gh-stack) skill.
+
+### `personal-wiki-init`
 
 Bootstrap an LLM-maintained personal wiki in any project. Creates a `wiki/` folder skeleton, installs companion skills (`wiki-ingest`, `wiki-query`, `review`) under `.claude/skills/`, and appends a marker-wrapped conventions block to `CLAUDE.md` so casual edits follow the same rules. Idempotent — safe to re-run for updates.
 
@@ -62,49 +79,9 @@ Inspired by [Andrej Karpathy's personal wiki idea](https://gist.github.com/karpa
 
 > **Prerequisite:** Enable the [Obsidian CLI](https://obsidian.md/help/cli) before using this skill. The wiki skills use the Obsidian CLI exclusively to open and manage vault files.
 
-#### Option 1 — `skills` CLI (npm)
-
-```bash
-npx skills add ycdesu/skills --skill personal-wiki-init
-```
-
-#### Option 2 — `gh skill` (GitHub CLI, in preview)
-
-```bash
-gh skill install ycdesu/skills personal-wiki-init
-```
-
-#### Option 3 — manual
-
-```bash
-git clone https://github.com/ycdesu/skills.git
-mkdir -p ~/.claude/skills
-cp -r skills/skills/personal-wiki-init ~/.claude/skills/
-```
-
-### [`vendorize-skill`](./skills/vendorize-skill/)
+### `vendorize-skill`
 
 Add or sync skills vendored from upstream GitHub repositories. Each vendored skill folder gets a `vendored.md` manifest that records the source URL, branch, subpath, pinned commit SHA, and sync date — so future updates know exactly what to diff and reconcile.
-
-#### Option 1 — `skills` CLI (npm)
-
-```bash
-npx skills add ycdesu/skills --skill vendorize-skill
-```
-
-#### Option 2 — `gh skill` (GitHub CLI, in preview)
-
-```bash
-gh skill install ycdesu/skills vendorize-skill
-```
-
-#### Option 3 — manual
-
-```bash
-git clone https://github.com/ycdesu/skills.git
-mkdir -p ~/.claude/skills
-cp -r skills/skills/vendorize-skill ~/.claude/skills/
-```
 
 ## Repo layout
 
