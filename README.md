@@ -60,7 +60,7 @@ Bootstrap an LLM-maintained personal wiki in any project. Creates a `wiki/` fold
 
 Inspired by [Andrej Karpathy's personal wiki idea](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
-> **Prerequisite:** If you use [Obsidian](https://obsidian.md/), install or enable the [Obsidian CLI](https://obsidian.md/help/cli) so wiki files can be opened directly from the terminal.
+> **Prerequisite:** Install or enable the [Obsidian CLI](https://obsidian.md/help/cli) before using this skill. The wiki skills use the Obsidian CLI exclusively to open and manage vault files.
 
 #### Option 1 — `skills` CLI (npm)
 
