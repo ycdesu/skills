@@ -1,9 +1,15 @@
 ---
 name: wiki-ingest
-description: Ingest sources or inbox fragments into the wiki. Trigger on "ingest [source]", "ingest inbox", "ingest fragments", or "ingest" when inbox contents are short/image items.
+description: Ingest sources, inbox fragments, or inline notes I've added into existing wiki pages. Trigger on "ingest [source]", "ingest inbox", "ingest fragments", "ingest" when inbox contents are short/image items, or "ingest my changes" / "organize my notes" / "ingest git changes" when `git status` shows inline notes added to existing wiki pages.
 ---
 
 # Wiki ingest
+
+## Modes
+
+- **Hybrid ingest** — full sources from `{{RAW}}/inbox/` (articles, docs, longer captures).
+- **Fragment ingest** — short captures (sentence, image, screenshot) from `{{RAW}}/inbox/`.
+- **Inline notes ingest** — notes I've typed directly inside an existing wiki page. Entry point is `git status` / `git diff`, not `{{RAW}}/inbox/`.
 
 ## Move policy — MUST only move ingested files
 
@@ -74,3 +80,25 @@ After all fragments:
 **Pause thresholds** are higher than hybrid — only pause on the same triggers (contradiction, ambiguous entity, new top-level concept). One-sentence fragments rarely warrant a pause.
 
 If any step fails for one fragment, abort before moving that fragment. Partial batches are fine.
+
+## Inline notes ingest
+
+Sometimes I type notes directly inside an existing wiki page rather than capturing into `{{RAW}}/inbox/`. The notes are typed quickly — order is rough, structure is missing. Entry point is `git status` / `git diff`; no `{{RAW}}/` file exists.
+
+Differences from hybrid:
+
+- **No source file, no move step.** The "source" is the diff itself.
+- **Merge into the topical home.** Notes appearing under a wikilink usually belong on the page that link points to (e.g., indented notes under a `[[someday/foo]]` bullet → merge into `someday/foo.md`). When unclear, pause and ask.
+- **Strip the notes from the capture location after merging**, but preserve the surrounding scaffolding (the parent bullet, the page's structure). Only the inline notes go.
+
+Steps:
+
+1. Run `git diff` on the modified wiki file(s) to see exactly what was added.
+2. For each added passage, identify its topical home — prefer a page already wikilinked nearby.
+3. (Optional pause — ambiguous home, contradiction, or new top-level concept.)
+4. **Merge** the notes into the target page, organizing as needed, in the language I typed them in. Bump `updated:`.
+5. Use the Obsidian CLI to remove the inline notes from the capture location. Keep any parent bullet or scaffolding that should remain.
+6. Update `{{WIKI}}/index.md` only if a new page was created.
+7. Append **one consolidated entry** to `{{WIKI}}/log.md`: files diffed, pages touched.
+
+If multiple wiki files have inline notes in the same batch, process each, then a single log entry.
