@@ -56,6 +56,8 @@ cp -r skills/skills/native-git-stack ~/.claude/skills/
 
 ### [`personal-wiki-init`](./skills/personal-wiki-init/)
 
+> Dump fragments anywhere — half-thoughts, links, scribbles. Claude threads them into your wiki and wires the wiki links. No dashboards. No config. Stay in flow.
+
 Bootstrap an LLM-maintained personal wiki in any project. Creates a `wiki/` folder skeleton, installs companion skills (`wiki-ingest`, `wiki-query`, `review`) under `.claude/skills/`, and appends a marker-wrapped conventions block to `CLAUDE.md` so casual edits follow the same rules. Idempotent — safe to re-run for updates.
 
 Inspired by [Andrej Karpathy's personal wiki idea](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
