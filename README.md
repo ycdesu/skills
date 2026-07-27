@@ -30,30 +30,6 @@ cp -r skills/skills/* ~/.claude/skills/
 
 More skills will be added here over time.
 
-### [`native-git-stack`](./skills/native-git-stack/)
-
-Manage stacked branches and pull requests using only native `git` and the GitHub CLI (`gh`), with no extensions or GitHub Stacked PRs feature required. Reorganizes your code into separate, atomic commits and branches so each change can be reviewed independently. Derived from GitHub's [`gh-stack`](https://github.com/github/gh-stack) skill.
-
-#### Option 1 — `skills` CLI (npm)
-
-```bash
-npx skills add ycdesu/skills --skill native-git-stack
-```
-
-#### Option 2 — `gh skill` (GitHub CLI, in preview)
-
-```bash
-gh skill install ycdesu/skills native-git-stack
-```
-
-#### Option 3 — manual
-
-```bash
-git clone https://github.com/ycdesu/skills.git
-mkdir -p ~/.claude/skills
-cp -r skills/skills/native-git-stack ~/.claude/skills/
-```
-
 ### [`personal-wiki-init`](./skills/personal-wiki-init/)
 
 > Dump fragments anywhere — half-thoughts, links, scribbles. Claude threads them into your wiki and wires the wiki links. No dashboards. No config. Stay in flow.
@@ -115,9 +91,6 @@ skills/
 ├── LICENSE
 ├── README.md
 └── skills/
-    ├── native-git-stack/
-    │   ├── LICENSE
-    │   └── SKILL.md
     ├── personal-wiki-init/
     │   ├── SKILL.md
     │   └── templates/
